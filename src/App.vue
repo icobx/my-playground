@@ -18,38 +18,58 @@
 			</li>
 		</ul>
 	</div>
-	<router-view @navigate-after-scroll="onNavigateAfterScroll" />
+	<router-view @on-navigate-after-scroll="navigateAfterScroll" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import router from './router'
 
+import SectionId from './types/SectionId'
+
 export default defineComponent({
 	methods: {
-		onNavigateAfterScroll: (section: string) => {
-			console.log(section)
+		navigateAfterScroll: (section: SectionId) => {
 			router.push({ name: 'Home', params: { id: section } })
 		},
-	},
-	beforeRouteUpdate(to, from, next) {
-		this.name = to.params.name
-
-		next()
 	},
 })
 </script>
 
 <style lang="scss">
 #nav {
+	// temp
+	z-index: 4000;
+
+	border-right: 2px solid white;
+	width: 120px;
+	height: 100vh;
 	padding: 30px;
+
+	position: fixed;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: right;
+
+	ul {
+		list-style-type: none;
+	}
 
 	a {
 		font-weight: bold;
-		color: #2c3e50;
+		color: rosybrown;
+		text-decoration: none;
+		font-family: 'Open Sans', sans-serif;
+
+		// font-size: 2.5vh;
+		// line-height: 1.4;
+		// text-transform: uppercase;
 
 		&.router-link-exact-active {
-			color: #42b983;
+			color: red;
 		}
 	}
 }
