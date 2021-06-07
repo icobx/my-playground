@@ -2,17 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
+@font-face {
+  font-family: "Clip";
+  src: url("../fonts/Clip.ttf");
+}
 
 // ------------- MIXINS ------------- //
 @mixin transition($time, $property: all, $easing: ease-in) {
-    transition: $property $time $easing;
+  transition: $property $time $easing;
 }
-
-// ------------- VARIABLES ------------- //
-$parallax-offset: 30vh;
-$content-offset: 40vh;
-$transition-speed: 1.2s;
-$slide-number: 4;
 
 * {
   padding: 0;
@@ -31,9 +29,15 @@ html, body {
   overflow: hidden;
   will-change: transform;
   backface-visibility: hidden;
+
+  // border-bottom: 2px solid white;
+
   height: 100vh + $parallax-offset;
   position: fixed;
   width: 100%;
+
+  color: $offwhite;
+
   transform: translateY($parallax-offset);
   @include transition($transition-speed, all, cubic-bezier(0.22, 0.44, 0, 1));
   &:before {
@@ -48,32 +52,44 @@ html, body {
     background-color: rgba(0,0,0,.3);
   }
   &:first-child {
-    background-image: url(https://i.postimg.cc/kXq9Qmnj/bgd1.jpg);
+    // background: linear-gradient(to bottom right, $darker-dark, $lighter-dark);
     transform: translateY(math.div(-$parallax-offset, 2)); 
     .content-wrapper {
       transform: translateY(math.div($parallax-offset, 2));
     }
   }
-  &:nth-child(2) {
-    background-image: url(https://i.postimg.cc/W14vywqg/photo-1424746219973-8fe3bd07d8e3.jpg);
-  }
-  &:nth-child(3) {
-    background-image: url(https://i.postimg.cc/TY0xQ41T/photo-1433840496881-cbd845929862.jpg);
-  }
+  // &:nth-child(2) {
+  //   background: linear-gradient(to top left, $darker-dark, $lighter-dark);
+  // }
+  // &:nth-child(3) {
+  //   background: #44633F; //url(https://i.postimg.cc/TY0xQ41T/photo-1433840496881-cbd845929862.jpg) #47b8e0
+  // }
+  // &:nth-child(4) {
+  //   background: #3F4B3B; // #34314c
+  // }
 }
 
-/* Set stacking context of slides */
 @for $i from 1 to ($slide-number + 1) {
-    .background:nth-child(#{$i}) {
+  .background:nth-child(#{$i}) {
+      /* Set stacking context of slides */
         z-index: ($slide-number + 1) - $i; 
+
+        @if $i % 2 == 0 {
+          background: linear-gradient(to top left, $darker-dark, $lighter-dark);
+        }
+        @else {
+          background: linear-gradient(to bottom right, $darker-dark, $lighter-dark);
+        }
     }
 }
 
 .content {
   &-wrapper {
     height: 100vh;
+    // width: 100vw;
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
     flex-flow: column nowrap;
     color: #fff;
@@ -86,10 +102,30 @@ html, body {
   }
   &-title {
     font-size: 12vh;
-    line-height: 1.4;
+    line-height: 1;
+    padding-bottom: 0.5em;
+    // display: inline-block;
   }
+
+  width: 100%;
+  max-width: 950px;
+  padding: 50px 20px;
 }
 
+.geom {
+  &-wrapper {
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    display: block;
+    width: 30vw;
+    height: 30vw;
+    
+    transform-origin: center;
+  }
+}
 // ------------- SET TRANSFORM VALUES ------------- //
 
 .background.up-scroll {

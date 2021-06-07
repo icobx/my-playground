@@ -2,7 +2,16 @@
 	<section id="skills" class="background">
 		<div class="content-wrapper">
 			<p class="content-title">Skills</p>
-			<p class="content-subtitle">Scroll down and up to see the effect!</p>
+			<p class="content-subtitle">
+				<ul>
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>JavaScript</li>
+				<li>Python</li>
+				<li>PHP</li>
+				<li>Java</li>
+			</ul>
+			</p>
 		</div>
 	</section>
 </template>

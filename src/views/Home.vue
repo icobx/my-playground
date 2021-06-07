@@ -1,6 +1,6 @@
 <template>
 	<div class="parallax">
-		<welcome-section />
+		<welcome-section :geomObjects="geomObjects" />
 		<about-section />
 		<skills-section />
 		<portfolio-section />
@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, onUpdated } from 'vue'
 import $ from 'jquery'
-import * as _ from 'underscore'
+import _ from 'underscore'
 
 import WelcomeSection from '../components/WelcomeSection.vue'
 import AboutSection from '../components/AboutSection.vue'
@@ -31,6 +31,7 @@ export default defineComponent({
 	emits: ['onNavigateAfterScroll'],
 	setup(props, { emit }) {
 		// ------------- VARIABLES ------------- //
+		const geomObjects = 1000
 		let ticking = false
 		let currentSlideNumber = 0
 		let totalSlideNumber: number
@@ -48,12 +49,12 @@ export default defineComponent({
 		onMounted(() => {
 			totalSlideNumber = $('.background').length
 			// ------------- ADD EVENT LISTENER ------------- //
-			window.addEventListener('wheel', xx, false)
+			window.addEventListener('wheel', throttledScroll, false)
 			parallaxScrollTo(props?.id)
 		})
 
 		onUnmounted(() => {
-			window.removeEventListener('wheel', xx)
+			window.removeEventListener('wheel', throttledScroll)
 		})
 
 		// ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
@@ -76,7 +77,7 @@ export default defineComponent({
 			}
 		}
 
-		const xx = _.throttle(parallaxScroll, 60)
+		const throttledScroll = _.throttle(parallaxScroll, 60)
 
 		const parallaxScrollTo = (id: string | undefined): void => {
 			if (!id) return
@@ -105,9 +106,11 @@ export default defineComponent({
 			currentSlideNumber++
 
 			const previousSlide = $('.background').eq(currentSlideNumber - 1)
-			const slideId = ($('.background').eq(currentSlideNumber).attr('id')
-				? $('.background').eq(currentSlideNumber).attr('id')
-				: 'welcome') as SectionId
+			const slideId = (
+				$('.background').eq(currentSlideNumber).attr('id')
+					? $('.background').eq(currentSlideNumber).attr('id')
+					: 'welcome'
+			) as SectionId
 
 			previousSlide.removeClass('up-scroll').addClass('down-scroll')
 
@@ -129,6 +132,8 @@ export default defineComponent({
 		const onNavigateAfterScroll = (sectionId: SectionId) => {
 			emit('onNavigateAfterScroll', sectionId)
 		}
+
+		return { geomObjects }
 	},
 })
 </script>

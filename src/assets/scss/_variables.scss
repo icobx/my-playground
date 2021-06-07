@@ -1,0 +1,14 @@
+$parallax-offset: 30vh;
+$content-offset: 40vh;
+$transition-speed: 1.2s;
+$slide-number: 4;
+
+$offwhite: #fafaee;
+$geom-color: rgba(255, 255, 255, 0.5);
+$darker-dark: #2a272a;
+$lighter-dark: #4b4a54;
+
+@keyframes infinite-rotate {  
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

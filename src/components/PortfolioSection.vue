@@ -2,7 +2,7 @@
 	<section id="portfolio" class="background">
 		<div class="content-wrapper">
 			<p class="content-title">Projects</p>
-			<p class="content-subtitle">Scroll down and up to see the effect!</p>
+			<p class="content-subtitle">projects i have worked on</p>
 		</div>
 	</section>
 </template>

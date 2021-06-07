@@ -1,0 +1,15 @@
+.geom {
+  &-wrapper--welcome {
+    transform: translate(-10%, 25%);
+  }
+  
+  &-welcome {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    border: 3px solid $geom-color;
+    animation: infinite-rotate 15s linear infinite;
+  }
+}
+

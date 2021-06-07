@@ -2,6 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import Temp from '../views/Temp.vue'
 
+const acceptedIds = 'welcome|about|skills|portfolio'
+
 const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/temp',
@@ -9,20 +11,15 @@ const routes: Array<RouteRecordRaw> = [
 		component: Temp,
 	},
 	{
-		path: '/:id',
+		path: `/:id(${acceptedIds})`,
 		name: 'Home',
 		component: Home,
 		props: true,
 	},
-	// {
-	//   path: "/about",
-	//   name: "About",
-	//   // route level code-splitting
-	//   // this generates a separate chunk (about.[hash].js) for this route
-	//   // which is lazy-loaded when the route is visited.
-	//   component: () =>
-	//     import(/* webpackChunkName: "about" */ "../views/About.vue"),
-	// },
+	{
+		path: '/:catchAll(.*)',
+		redirect: '/welcome',
+	},
 ]
 
 const router = createRouter({

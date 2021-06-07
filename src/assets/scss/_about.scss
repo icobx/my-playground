@@ -1,0 +1,48 @@
+
+.geom {
+  &-wrapper--about {
+    transform: translate(20%, 0%);
+  }
+  
+  &-about {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    overflow: hidden;
+    transform-origin: 25% 75%;
+    animation: infinite-rotate 15s linear infinite;
+
+    div {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      div { 
+        position: absolute;
+        line-height: 0;
+        font-size: 0;
+
+        top: 0;
+        left: 0;
+  
+        &:first-child {
+          border: solid $geom-color;
+          border-width: 0 0 3px 3px;
+          transform-origin: left top;
+        }
+        
+        &:last-child {
+          top: -3px;
+          width: 200%;
+
+          border: solid $geom-color;
+          border-width: 3px 0 0 0;
+  
+          transform: rotate(45deg);
+          transform-origin: left top;
+        }
+      }
+    }
+  }
+}
