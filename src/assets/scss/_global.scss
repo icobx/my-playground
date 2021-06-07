@@ -100,11 +100,11 @@ html, body {
     backface-visibility: hidden;
     @include transition($transition-speed + .5, all, cubic-bezier(0.22, 0.44, 0, 1));
   }
+  
   &-title {
     font-size: 12vh;
     line-height: 1;
     padding-bottom: 0.5em;
-    // display: inline-block;
   }
 
   width: 100%;
