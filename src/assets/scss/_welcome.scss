@@ -1,14 +1,14 @@
 .geom {
-  &-wrapper--welcome {
+  &-wrapper--square {
     transform: translate(-10%, 25%);
   }
   
-  &-welcome {
+  &-square {
     position: absolute;
     width: 100%;
     height: 100%;
     
-    border: 3px solid $geom-color;
+    border: $geom-border-width solid $geom-color;
     animation: infinite-rotate 15s linear infinite;
   }
 }

@@ -12,8 +12,8 @@
 				<li>Java</li>
 			</ul>
 		</div>
-		<div class="geom-wrapper geom-wrapper--skills">
-			<div class="geom-skills"></div>
+		<div class="geom-wrapper geom-wrapper--line">
+			<div class="geom-line"></div>
 		</div>
 	</section>
 </template>

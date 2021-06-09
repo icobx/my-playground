@@ -4,6 +4,9 @@
 			<p class="content-title">Projects</p>
 			<p class="content-subtitle">projects i have worked on</p>
 		</div>
+		<div class="geom-wrapper geom-wrapper--circle">
+			<div class="geom-circle"></div>
+		</div>
 	</section>
 </template>
 

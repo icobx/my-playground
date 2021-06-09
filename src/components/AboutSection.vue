@@ -11,8 +11,8 @@
 				<small>some of which you will see below</small>, and that is something I would like to change.
 			</p>
 		</div>
-		<div class="geom-wrapper geom-wrapper--about">
-			<div class="geom-about">
+		<div class="geom-wrapper geom-wrapper--triangle">
+			<div class="geom-triangle">
 				<div>
 					<div></div>
 					<div></div>

@@ -10,8 +10,8 @@
 				</p>
 			</div>
 		</div>
-		<div class="geom-wrapper geom-wrapper--welcome">
-			<div class="geom-welcome"></div>
+		<div class="geom-wrapper geom-wrapper--square">
+			<div class="geom-square"></div>
 		</div>
 	</section>
 </template>
