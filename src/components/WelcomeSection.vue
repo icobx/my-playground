@@ -6,7 +6,6 @@
 				<h1 class="content-title">Welcome</h1>
 				<p class="content-subtitle">
 					My name is Jakub and on the following pages you will get to know me a little better.
-					<!-- <img :src="require('@/assets/images/J_animated.svg')" alt="animated J svg" /> -->
 				</p>
 			</div>
 		</div>
@@ -19,17 +18,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-export default defineComponent({
-	props: {
-		geomObjects: {
-			required: true,
-			type: Number,
-		},
-	},
-	setup() {
-		return {}
-	},
-})
+export default defineComponent({})
 </script>
 
 <style scoped></style>

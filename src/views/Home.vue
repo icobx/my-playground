@@ -1,6 +1,6 @@
 <template>
 	<div class="parallax">
-		<welcome-section :geomObjects="geomObjects" />
+		<welcome-section />
 		<about-section />
 		<skills-section />
 		<portfolio-section />
@@ -12,9 +12,9 @@ import { defineComponent, onMounted, onUnmounted, onUpdated } from 'vue'
 import $ from 'jquery'
 import _ from 'underscore'
 
-import WelcomeSection from '../components/WelcomeSection.vue'
-import AboutSection from '../components/AboutSection.vue'
-import SkillsSection from '../components/SkillsSection.vue'
+import WelcomeSection from '@/components/WelcomeSection.vue'
+import AboutSection from '@/components/AboutSection.vue'
+import SkillsSection from '@/components/SkillsSection.vue'
 import PortfolioSection from '@/components/PortfolioSection.vue'
 import SectionId from '@/types/SectionId'
 // import SectionId from '@/types/SectionId'
@@ -31,7 +31,6 @@ export default defineComponent({
 	emits: ['onNavigateAfterScroll'],
 	setup(props, { emit }) {
 		// ------------- VARIABLES ------------- //
-		const geomObjects = 1000
 		let ticking = false
 		let currentSlideNumber = 0
 		let totalSlideNumber: number
@@ -132,8 +131,6 @@ export default defineComponent({
 		const onNavigateAfterScroll = (sectionId: SectionId) => {
 			emit('onNavigateAfterScroll', sectionId)
 		}
-
-		return { geomObjects }
 	},
 })
 </script>

@@ -17,6 +17,14 @@ html, body {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: #82aab3;
+  }
+}
+
 .background {
   background-size: cover;
   background-repeat: no-repeat;
@@ -81,7 +89,7 @@ html, body {
     flex-flow: column nowrap;
     color: #fff;
     font-family: Montserrat;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     transform: translateY($content-offset);
     will-change: transform;
     backface-visibility: hidden;
@@ -92,6 +100,14 @@ html, body {
     font-size: 12vh;
     line-height: 1;
     padding-bottom: 0.5em;
+    text-transform: uppercase;
+  }
+
+  &-subtitle {
+    max-width: 80ch;
+    // text-align: left;
+    line-height: 2em;
+    // text-transform: capitalize;
   }
 
   width: 100%;
