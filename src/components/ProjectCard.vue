@@ -1,13 +1,15 @@
 <template>
-	<div class="project">
-		<div class="project-info">
-			<h2>{{ project.name }}</h2>
-			<p>
-				{{ project.content }}
-			</p>
-		</div>
-		<div class="project-img">
-			<img :src="require('@/assets/images/' + project.image)" alt="prject img" />
+	<div>
+		<div class="project">
+			<div class="project-info">
+				<h2>{{ project.name }}</h2>
+				<p>
+					{{ project.content }}
+				</p>
+			</div>
+			<div class="project-img">
+				<img :src="require('@/assets/images/' + project.image)" alt="prject img" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -30,9 +32,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .project {
-	margin: 8em 0;
-	// border: 1px solid greenyellow;
-	width: 50vw;
+	// margin: 8em 0;
+	border: 1px solid greenyellow;
+	// width: 50vw;
 
 	display: flex;
 	// align-items: ;

@@ -2,9 +2,16 @@
 	<div class="carousel-wrapper">
 		<button id="previous" class="carousel-btn" @click="swipe(true)">&lt;</button>
 		<div class="carousel-cards">
-			<!-- <transition-group name="fade">
-			</transition-group> -->
-			<project-card v-for="project in activeProjects" :key="project.name" :project="project" />
+			<transition-group name="slide" mode="out-in">
+				<project-card
+					v-for="project in projects"
+					:key="project.name"
+					:project="project"
+					v-show="project.active"
+					class="carousel-card"
+				/>
+			</transition-group>
+			<!-- :class="{ hidden: !project.active }" -->
 		</div>
 		<button id="next" class="carousel-btn" @click="swipe(false)">&gt;</button>
 	</div>
@@ -71,18 +78,61 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity 0.25s ease-out;
-}
+.carousel {
+	&-wrapper {
+		margin: 8em 0;
+		border: 1px solid red;
+		max-height: 50vh;
+		display: flex;
+		justify-content: space-between;
+	}
 
-.fade-enter,
-.fade-leave-to {
-	opacity: 0;
-}
+	&-cards {
+		height: 43.5vh;
+		width: 50vw;
+		position: relative;
+		// overflow: hidden;
+	}
 
-.carousel-wrapper {
-	display: flex;
-	justify-content: space-between;
+	&-card {
+		height: 100%;
+		width: 100%;
+		display: inline-block;
+		position: absolute;
+		left: 0;
+	}
+}
+.slide {
+	&-enter {
+		opacity: 0;
+		// right: 30vw;
+		transform: translateX(100px);
+
+		&-to {
+			opacity: 1;
+			// right: 0;
+		}
+	}
+
+	&-leave {
+		opacity: 1;
+		// left: 0;
+
+		&-to {
+			opacity: 0;
+			// left: 30vw;
+			transform: translateX(100px);
+		}
+	}
+
+	&-enter-active {
+		transition: all 0.5 ease-in;
+	}
+	&-leave-active {
+		transition: all 0.5s ease-out;
+	}
+}
+.hidden {
+	display: none;
 }
 </style>
