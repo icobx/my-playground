@@ -33,7 +33,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .project {
 	// margin: 8em 0;
-	border: 1px solid greenyellow;
+	// border: 1px solid greenyellow;
 	// width: 50vw;
 
 	display: flex;

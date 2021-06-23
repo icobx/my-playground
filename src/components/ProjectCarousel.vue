@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -34,14 +34,16 @@ export default defineComponent({
 		ProjectCard,
 	},
 	setup() {
+		// smt to do with font awesome
 		library.add(faChevronRight, faChevronLeft)
+
 		const projects = ref<ProjectData[]>([
 			{
 				name: 'project 1',
 				content:
 					'1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa eos natus eaque optio perspiciatis quasi illo hic aspernatur iure, ducimus consectetur doloribus nostrum non quisquam voluptatum necessitatibus minima aut modi porro nesciunt quibusdam perferendis vel voluptates consequatur. Magni, quis! Ullam nam, similique deserunt dolor ex repudiandae, optio earum rerum atque laudantium exercitationem officiis quae tempora nihil. Incidunt maiores accusamus totam inventore debitis nulla asperiores quisquam, impedit in adipisci? Veniam, voluptas optio? Distinctio, eos libero, porro reprehenderit sit recusandae deserunt sunt error nam, praesentium nihil quasi reiciendis. A quaerat labore eligendi natus! Dolores deleniti facere ut, magni dolorum quibusdam commodi atque!',
 				image: 'webte1.png',
-				active: false,
+				active: true,
 			},
 			{
 				name: 'project 2',
@@ -55,15 +57,11 @@ export default defineComponent({
 				content:
 					'3. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa eos natus eaque optio perspiciatis quasi illo hic aspernatur iure, ducimus consectetur doloribus nostrum non quisquam voluptatum necessitatibus minima aut modi porro nesciunt quibusdam perferendis vel voluptates consequatur. Magni, quis! Ullam nam, similique deserunt dolor ex repudiandae, optio earum rerum atque laudantium exercitationem officiis quae tempora nihil. Incidunt maiores accusamus totam inventore debitis nulla asperiores quisquam, impedit in adipisci? Veniam, voluptas optio? Distinctio, eos libero, porro reprehenderit sit recusandae deserunt sunt error nam, praesentium nihil quasi reiciendis. A quaerat labore eligendi natus! Dolores deleniti facere ut, magni dolorum quibusdam commodi atque!',
 				image: 'library.png',
-				active: true,
+				active: false,
 			},
 		])
 
 		const transitionName = ref('slide-next')
-
-		const activeProjects = computed(() => {
-			return projects.value.filter((project) => project.active)
-		})
 
 		const swipe = (prev: boolean) => {
 			let n = projects.value.length
@@ -74,14 +72,13 @@ export default defineComponent({
 			for (let i = 0; i < n; i++) {
 				if (projects.value[i].active) {
 					projects.value[i].active = false
-					// console.log(prev ? (i - 1 + n) % n : (i + 1) % n)
 					projects.value[prev ? (i - 1 + n) % n : (i + 1) % n].active = true
 					break
 				}
 			}
 		}
 
-		return { projects, activeProjects, swipe, transitionName }
+		return { projects, transitionName, swipe }
 	},
 })
 </script>
@@ -117,31 +114,23 @@ export default defineComponent({
 		color: white;
 		padding: 0 2em;
 		border: 0;
+		border-radius: 5px;
 
 		display: flex;
 		align-items: center;
 		justify-content: center;
 
+		background-color: transparent;
+		transition: background-color 0.25s ease-in;
 		&-icon {
 			// border: 1px solid white;
 			width: 1em;
 			height: 1em;
 		}
 		&:hover {
-			background-color: rgba($color: #000000, $alpha: 0.3);
-			// border: 1px solid white;
-			// border-width: 1px 0 1px 1px;
+			background-color: rgba($color: #000000, $alpha: 0.2);
+			// background-color: rgba(lighten(#4b4a54, 20%), $alpha: 0.2);
 		}
-		// &:first-child {
-
-		// }
-
-		// &:last-child {
-		// 	&:hover {
-		// 		// border: 1px solid white;
-		// 		// border-width: 1px 1px 1px 0;
-		// 	}
-		// }
 	}
 }
 
